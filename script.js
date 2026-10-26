@@ -34,13 +34,6 @@ const MESSAGES = {
 const lang = document.documentElement.lang === "en" ? "en" : "it";
 const t = MESSAGES[lang];
 
-// Keep the visitor on the same section when switching language.
-document.querySelectorAll(".lang-switch").forEach((link) => {
-  link.addEventListener("click", () => {
-    if (location.hash) link.hash = location.hash;
-  });
-});
-
 // Hide broken images so the warm placeholder behind them shows instead.
 document.querySelectorAll(".photo img").forEach((img) => {
   const markBroken = () => img.classList.add("is-broken");
