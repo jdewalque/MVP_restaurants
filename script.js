@@ -1,4 +1,4 @@
-// Passaparola — form handling.
+// Passaparola — form handling and language switch.
 //
 // FORM_ENDPOINT: URL of a form backend that accepts POST (e.g. Formspree
 // "https://formspree.io/f/xxxxxxx"). Left empty, submissions fall back to
@@ -6,10 +6,40 @@
 const FORM_ENDPOINT = "";
 const CONTACT_EMAIL = "ciao@passaparola.it";
 
-const LABELS = {
-  ristorante: "Candidatura ristorante",
-  creator: "Candidatura creator",
+const MESSAGES = {
+  it: {
+    ristorante: "Candidatura ristorante",
+    creator: "Candidatura creator",
+    yes: "sì",
+    no: "no",
+    invalid: "Controlla i campi evidenziati, per favore.",
+    mailOpened: "Si è aperta la tua app email: invia il messaggio per completare la candidatura.",
+    sending: "Invio in corso…",
+    sent: "Grazie! Abbiamo ricevuto la tua candidatura, ti ricontattiamo presto.",
+    failed: `Qualcosa è andato storto. Riprova o scrivici a ${CONTACT_EMAIL}.`,
+  },
+  en: {
+    ristorante: "Restaurant application",
+    creator: "Creator application",
+    yes: "yes",
+    no: "no",
+    invalid: "Please check the highlighted fields.",
+    mailOpened: "Your email app has opened: send the message to complete your application.",
+    sending: "Sending…",
+    sent: "Thank you! We've received your application and will be in touch soon.",
+    failed: `Something went wrong. Please try again or write to us at ${CONTACT_EMAIL}.`,
+  },
 };
+
+const lang = document.documentElement.lang === "en" ? "en" : "it";
+const t = MESSAGES[lang];
+
+// Keep the visitor on the same section when switching language.
+document.querySelectorAll(".lang-switch").forEach((link) => {
+  link.addEventListener("click", () => {
+    if (location.hash) link.hash = location.hash;
+  });
+});
 
 // Hide broken images so the warm placeholder behind them shows instead.
 document.querySelectorAll(".photo img").forEach((img) => {
@@ -41,13 +71,13 @@ function collect(form) {
     if (key === "website") return;
     data[key] = typeof value === "string" ? value.trim() : value;
   });
-  data.privacy = data.privacy ? "sì" : "no";
+  data.privacy = data.privacy ? t.yes : t.no;
   return data;
 }
 
 function mailtoFallback(type, data) {
   const lines = Object.entries(data).map(([k, v]) => `${k.replace(/_/g, " ")}: ${v}`);
-  const subject = encodeURIComponent(`${LABELS[type]} — Passaparola`);
+  const subject = encodeURIComponent(`${t[type]} — Passaparola`);
   const body = encodeURIComponent(lines.join("\n"));
   window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
 }
@@ -70,7 +100,7 @@ document.querySelectorAll("form[data-form]").forEach((form) => {
 
     const invalid = validate(form);
     if (invalid) {
-      setStatus(form, "Controlla i campi evidenziati, per favore.", "error");
+      setStatus(form, t.invalid, "error");
       invalid.focus();
       return;
     }
@@ -79,25 +109,25 @@ document.querySelectorAll("form[data-form]").forEach((form) => {
 
     if (!FORM_ENDPOINT) {
       mailtoFallback(type, data);
-      setStatus(form, "Si è aperta la tua app email: invia il messaggio per completare la candidatura.", "ok");
+      setStatus(form, t.mailOpened, "ok");
       return;
     }
 
     const button = form.querySelector('button[type="submit"]');
     button.disabled = true;
-    setStatus(form, "Invio in corso…");
+    setStatus(form, t.sending);
 
     try {
       const response = await fetch(FORM_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ tipo: LABELS[type], ...data }),
+        body: JSON.stringify({ tipo: t[type], lingua: lang, ...data }),
       });
       if (!response.ok) throw new Error(String(response.status));
       form.reset();
-      setStatus(form, "Grazie! Abbiamo ricevuto la tua candidatura, ti ricontattiamo presto.", "ok");
+      setStatus(form, t.sent, "ok");
     } catch (error) {
-      setStatus(form, `Qualcosa è andato storto. Riprova o scrivici a ${CONTACT_EMAIL}.`, "error");
+      setStatus(form, t.failed, "error");
     } finally {
       button.disabled = false;
     }
