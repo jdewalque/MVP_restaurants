@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passaparola · Il passaparola del tuo quartiere, ogni mese</title>
+  <meta name="description" content="Creator che vivono a Milano vengono a mangiare nel tuo ristorante e pubblicano un video. Organizziamo tutto noi. Fase pilota a Milano.">
+  <meta name="theme-color" content="#B04E2E">
+  <meta property="og:title" content="Passaparola">
+  <meta property="og:description" content="Il passaparola del tuo quartiere, ogni mese.">
+  <meta property="og:locale" content="it_IT">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenuto">Vai al contenuto</a>
+
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a class="brand" href="#" aria-label="Passaparola, torna all'inizio">
+        <span class="brand__mark" aria-hidden="true">P</span>
+        Passaparola
+      </a>
+      <nav class="topbar__nav" aria-label="Navigazione principale">
+        <a href="#ristoranti">Ristoranti</a>
+        <a href="#creator">Creator</a>
+        <a href="#pilota">Fase pilota</a>
+      </nav>
+      <a class="btn btn--small" href="#candidature">Candidati</a>
+    </div>
+  </header>
+
+  <main id="contenuto">
+    <!-- 1. Hero -->
+    <section class="hero">
+      <div class="container hero__inner">
+        <div class="hero__text">
+          <p class="eyebrow">Milano · ristoranti di quartiere × creator locali</p>
+          <h1>Il passaparola del tuo quartiere, ogni mese.</h1>
+          <p class="hero__lead">Creator che vivono a Milano vengono a mangiare da te e pubblicano un video. Organizziamo tutto noi.</p>
+          <div class="hero__ctas">
+            <a class="btn" href="#form-ristorante">Sono un ristorante</a>
+            <a class="btn btn--ghost" href="#form-creator">Sono un creator</a>
+          </div>
+        </div>
+        <div class="hero__photos" aria-hidden="true">
+          <figure class="photo photo--tall">
+            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=700&q=70" alt="" width="700" height="900" fetchpriority="high">
+          </figure>
+          <figure class="photo">
+            <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=600&q=70" alt="" width="600" height="600">
+          </figure>
+          <figure class="photo">
+            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=70" alt="" width="600" height="600">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Come funziona: ristoranti -->
+    <section class="section" id="ristoranti" aria-labelledby="ristoranti-title">
+      <div class="container">
+        <p class="eyebrow">Per i ristoranti</p>
+        <h2 id="ristoranti-title">Come funziona per il tuo ristorante</h2>
+        <p class="section__intro">Tre passaggi, zero pensieri. Tu cucini, al resto pensiamo noi.</p>
+        <ol class="steps">
+          <li class="step">
+            <span class="step__num" aria-hidden="true">1</span>
+            <h3>Scegliamo i creator del quartiere</h3>
+            <p>Selezioniamo creator che vivono vicino a te e che parlano a chi abita e lavora nella tua zona.</p>
+          </li>
+          <li class="step">
+            <span class="step__num" aria-hidden="true">2</span>
+            <h3>Vengono a mangiare e pubblicano</h3>
+            <p>I creator prenotano, si siedono al tuo tavolo come clienti e pubblicano un video sul tuo locale.</p>
+          </li>
+          <li class="step">
+            <span class="step__num" aria-hidden="true">3</span>
+            <h3>Ricevi i risultati</h3>
+            <p>Ti mandiamo i link dei video pubblicati e i dati delle visualizzazioni, così vedi cosa è successo.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 3. Come funziona: creator -->
+    <section class="section section--cream" id="creator" aria-labelledby="creator-title">
+      <div class="container split">
+        <figure class="photo photo--feature">
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=70" alt="Tavolo apparecchiato in un ristorante, con piatti appena serviti" width="900" height="700" loading="lazy">
+        </figure>
+        <div>
+          <p class="eyebrow">Per i creator</p>
+          <h2 id="creator-title">Come funziona se crei contenuti</h2>
+          <ul class="perks">
+            <li>
+              <h3>Inviti in ristoranti vicino a casa tua</h3>
+              <p>Ricevi proposte da locali del tuo quartiere, non dall'altra parte della città.</p>
+            </li>
+            <li>
+              <h3>Scegli tu il giorno e l'orario</h3>
+              <p>Prenoti lo slot che ti va meglio tra quelli disponibili. Niente rincorse via DM.</p>
+            </li>
+            <li>
+              <h3>Nessuna trattativa</h3>
+              <p>Le condizioni sono chiare fin dall'inizio, uguali per tutti. Tu pensi solo a mangiare e raccontare.</p>
+            </li>
+          </ul>
+          <a class="btn" href="#form-creator">Candidati come creator</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Fase pilota -->
+    <section class="section pilot" id="pilota" aria-labelledby="pilota-title">
+      <div class="container">
+        <div class="pilot__card">
+          <p class="eyebrow eyebrow--light">Fase pilota</p>
+          <h2 id="pilota-title">Stiamo lanciando a Milano con i primi 10 ristoranti.</h2>
+          <p class="pilot__lead">Le prime visite sono gratuite.</p>
+          <p>Siamo all'inizio: stiamo costruendo il servizio insieme ai primi locali e ai primi creator. Se ti candidi adesso, ci aiuti a capire cosa funziona davvero.</p>
+          <a class="btn btn--light" href="#form-ristorante">Candida il tuo ristorante</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Moduli -->
+    <section class="section section--cream" id="candidature" aria-labelledby="candidature-title">
+      <div class="container">
+        <p class="eyebrow">Candidature</p>
+        <h2 id="candidature-title">Partecipa alla fase pilota</h2>
+        <p class="section__intro">Compila il modulo che fa per te: ti ricontattiamo noi.</p>
+
+        <div class="forms">
+          <form class="form-card" id="form-ristorante" data-form="ristorante" novalidate>
+            <h3>Sono un ristorante</h3>
+            <div class="field">
+              <label for="r-nome">Nome del ristorante</label>
+              <input id="r-nome" name="nome_ristorante" type="text" autocomplete="organization" required>
+            </div>
+            <div class="field">
+              <label for="r-quartiere">Quartiere</label>
+              <input id="r-quartiere" name="quartiere" type="text" list="quartieri" placeholder="Es. Isola, NoLo, Porta Venezia…" required>
+            </div>
+            <div class="field">
+              <label for="r-contatto">Contatto <span class="hint">(email o telefono)</span></label>
+              <input id="r-contatto" name="contatto" type="text" autocomplete="email" required>
+            </div>
+            <div class="field">
+              <label for="r-instagram">Instagram del locale</label>
+              <input id="r-instagram" name="instagram" type="text" placeholder="@nomedellocale" autocapitalize="off" spellcheck="false">
+            </div>
+            <div class="field field--check">
+              <input id="r-privacy" name="privacy" type="checkbox" required>
+              <label for="r-privacy">Ho letto l'<a href="privacy.html">informativa privacy</a> e acconsento al trattamento dei dati per essere ricontattato.</label>
+            </div>
+            <div class="hp" aria-hidden="true">
+              <label for="r-website">Lascia vuoto</label>
+              <input id="r-website" name="website" type="text" tabindex="-1" autocomplete="off">
+            </div>
+            <button class="btn btn--block" type="submit">Invia candidatura</button>
+            <p class="form-status" role="status" aria-live="polite"></p>
+          </form>
+
+          <form class="form-card" id="form-creator" data-form="creator" novalidate>
+            <h3>Sono un creator</h3>
+            <div class="field">
+              <label for="c-handle">Nome utente Instagram o TikTok</label>
+              <input id="c-handle" name="handle" type="text" placeholder="@iltuonome" autocapitalize="off" spellcheck="false" required>
+            </div>
+            <div class="field">
+              <label for="c-quartiere">Il tuo quartiere</label>
+              <input id="c-quartiere" name="quartiere" type="text" list="quartieri" placeholder="Es. Città Studi, Navigli…" required>
+            </div>
+            <div class="field">
+              <label for="c-cucina">Tipo di cucina preferita</label>
+              <select id="c-cucina" name="cucina_preferita" required>
+                <option value="">Scegli…</option>
+                <option>Milanese e lombarda</option>
+                <option>Italiana regionale</option>
+                <option>Pizza</option>
+                <option>Pesce</option>
+                <option>Vegetariana e vegana</option>
+                <option>Asiatica</option>
+                <option>Mediorientale</option>
+                <option>Sudamericana</option>
+                <option>Africana</option>
+                <option>Street food</option>
+                <option>Colazione e brunch</option>
+                <option>Tutto, sono curioso/a</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="c-email">Email <span class="hint">(facoltativa, altrimenti ti scriviamo in DM)</span></label>
+              <input id="c-email" name="email" type="email" autocomplete="email">
+            </div>
+            <div class="field field--check">
+              <input id="c-privacy" name="privacy" type="checkbox" required>
+              <label for="c-privacy">Ho letto l'<a href="privacy.html">informativa privacy</a> e acconsento al trattamento dei dati per essere ricontattato/a.</label>
+            </div>
+            <div class="hp" aria-hidden="true">
+              <label for="c-website">Lascia vuoto</label>
+              <input id="c-website" name="website" type="text" tabindex="-1" autocomplete="off">
+            </div>
+            <button class="btn btn--block" type="submit">Invia candidatura</button>
+            <p class="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+
+        <datalist id="quartieri">
+          <option value="Brera"></option>
+          <option value="Isola"></option>
+          <option value="NoLo"></option>
+          <option value="Porta Venezia"></option>
+          <option value="Porta Romana"></option>
+          <option value="Navigli"></option>
+          <option value="Ticinese"></option>
+          <option value="Città Studi"></option>
+          <option value="Lambrate"></option>
+          <option value="Bovisa"></option>
+          <option value="Sarpi / Chinatown"></option>
+          <option value="Loreto"></option>
+          <option value="Porta Genova"></option>
+          <option value="Tortona"></option>
+          <option value="San Siro"></option>
+          <option value="Bicocca"></option>
+          <option value="Corvetto"></option>
+          <option value="Centrale"></option>
+          <option value="Garibaldi"></option>
+          <option value="Dergano"></option>
+        </datalist>
+      </div>
+    </section>
+  </main>
+
+  <!-- 6. Footer -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>
+        <p class="brand brand--footer"><span class="brand__mark" aria-hidden="true">P</span> Passaparola</p>
+        <p>Il passaparola del tuo quartiere, ogni mese.</p>
+      </div>
+      <div>
+        <p class="footer__label">Contatti</p>
+        <p><a href="mailto:ciao@passaparola.it">ciao@passaparola.it</a></p>
+      </div>
+      <div>
+        <p class="footer__label">Chi siamo</p>
+        <p>Un progetto studentesco nato al Politecnico di Milano.</p>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <a href="privacy.html">Informativa privacy (GDPR)</a>
+      <span>Foto: <a href="https://unsplash.com/license" rel="noopener">Unsplash</a></span>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
