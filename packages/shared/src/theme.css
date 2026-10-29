@@ -1,0 +1,22 @@
+/* Passaparola design tokens, taken from apps/landing/styles.css.
+   The landing page (static, no build step) keeps its own copy of these values for now;
+   when it moves to Next.js it should import this file instead. */
+
+:root {
+  --terracotta: #b04e2e;
+  --terracotta-dark: #8f3c21;
+  --terracotta-soft: #e9b49c;
+  --cream: #fbf4e8;
+  --cream-deep: #f3e5cd;
+  --ink: #2b1d16;
+  --ink-soft: #5c4a3f;
+  --olive: #5f6b34;
+  --white: #fffdf9;
+  --danger: #b3261e;
+  --warning-bg: #fff1d6;
+  --warning-ink: #7a4b00;
+  --radius: 18px;
+  --shadow: 0 10px 30px rgba(77, 40, 20, 0.12);
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}

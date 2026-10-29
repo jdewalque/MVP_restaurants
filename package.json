@@ -1,0 +1,27 @@
+{
+  "name": "passaparola",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "dev": "npm run dev -w @passaparola/dashboard",
+    "dev:landing": "npm run dev -w @passaparola/landing",
+    "build": "npm run build -w @passaparola/dashboard",
+    "start": "npm run start -w @passaparola/dashboard",
+    "db:migrate": "npm run db:migrate -w @passaparola/dashboard",
+    "seed": "npm run seed -w @passaparola/dashboard",
+    "sync": "npm run sync -w @passaparola/dashboard",
+    "test": "vitest run",
+    "typecheck": "npm run typecheck --workspaces --if-present"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3",
+    "vitest": "5.0.5"
+  }
+}

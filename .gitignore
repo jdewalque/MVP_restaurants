@@ -1,0 +1,20 @@
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Local SQLite database
+*.db
+*.db-journal
+
+# Generated Prisma client
+apps/dashboard/src/generated/
+
+.DS_Store
+npm-debug.log*

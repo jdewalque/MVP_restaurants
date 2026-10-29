@@ -1,0 +1,20 @@
+{
+  "name": "@passaparola/shared",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Types, configuration, Meta API client and metric calculations shared by Passaparola apps",
+  "exports": {
+    "./types": "./src/types.ts",
+    "./config": "./src/config.ts",
+    "./metrics": "./src/metrics.ts",
+    "./format": "./src/format.ts",
+    "./matching": "./src/matching.ts",
+    "./crypto": "./src/crypto.ts",
+    "./meta": "./src/meta/index.ts",
+    "./theme.css": "./src/theme.css"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  }
+}

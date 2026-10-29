@@ -1,0 +1,121 @@
+// Passaparola dashboard — prototype data model.
+// SQLite for the prototype; switch `provider` to "postgresql" (and the driver adapter
+// in src/lib/db.ts) to move to PostgreSQL / Supabase.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Restaurant {
+  id                    String   @id @default(cuid())
+  slug                  String   @unique
+  name                  String
+  neighborhood          String
+  /// Monthly subscription price, in euro cents.
+  monthlyPriceCents     Int
+  /// Restaurant's own Instagram handle, used to suggest Reel ↔ restaurant matches.
+  instagramHandle       String?
+  subscriptionStartedAt DateTime @default(now())
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
+  reels Reel[]
+}
+
+model Creator {
+  id             String    @id @default(cuid())
+  /// Instagram professional account ID (graph "ig-user-id").
+  igUserId       String    @unique
+  username       String
+  followersCount Int?
+  pageId         String?
+  pageName       String?
+  /// "manual" (token pasted in admin), "oauth" (Facebook Login) or "demo" (seed data, no token).
+  connectedVia   String
+  /// AES-256-GCM encrypted long-lived user token. Never sent to the browser.
+  accessTokenEnc String?
+  /// null = unknown or never expires.
+  tokenExpiresAt DateTime?
+  /// Date after which Meta requires the user to re-authorise data access (~90 days).
+  dataAccessExpiresAt DateTime?
+  tokenScopes    String?
+  lastSyncedAt   DateTime?
+  lastSyncError  String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  reels Reel[]
+}
+
+model Reel {
+  id           String    @id @default(cuid())
+  igMediaId    String    @unique
+  creatorId    String
+  creator      Creator   @relation(fields: [creatorId], references: [id], onDelete: Cascade)
+  restaurantId String?
+  restaurant   Restaurant? @relation(fields: [restaurantId], references: [id], onDelete: SetNull)
+  permalink    String?
+  /// Instagram CDN URLs expire; refreshed on every sync.
+  thumbnailUrl String?
+  caption      String?
+  mediaType    String?
+  publishedAt  DateTime
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  snapshots ReelMetricSnapshot[]
+
+  @@index([restaurantId])
+  @@index([creatorId])
+}
+
+/// One row per Reel per day (UTC). A re-sync on the same day refreshes that day's row;
+/// earlier days are never modified, so the history can be charted.
+model ReelMetricSnapshot {
+  id                String   @id @default(cuid())
+  reelId            String
+  reel              Reel     @relation(fields: [reelId], references: [id], onDelete: Cascade)
+  /// Collection day, "YYYY-MM-DD" (UTC).
+  day               String
+  collectedAt       DateTime @default(now())
+  views             Int?
+  reach             Int?
+  likes             Int?
+  comments          Int?
+  shares            Int?
+  saved             Int?
+  totalInteractions Int?
+  /// Milliseconds.
+  avgWatchTimeMs    Int?
+  /// Milliseconds.
+  totalWatchTimeMs  Int?
+  /// "grouped", "per-metric" or "unavailable" (see the Meta client).
+  insightsMode      String?
+  /// Raw insights responses from Meta (JSON, tokens redacted), for auditing.
+  rawJson           String?
+
+  @@unique([reelId, day])
+  @@index([day])
+}
+
+model SyncRun {
+  id            String    @id @default(cuid())
+  startedAt     DateTime  @default(now())
+  finishedAt    DateTime?
+  /// "running", "success", "partial" or "failed".
+  status        String
+  /// "cli", "api" or "admin".
+  trigger       String
+  creatorCount  Int       @default(0)
+  reelCount     Int       @default(0)
+  snapshotCount Int       @default(0)
+  /// JSON array of { creator, reel?, kind, message }.
+  errorsJson    String?
+  /// Highest rate-limit usage percentage seen during the run.
+  maxUsagePercent Int?
+}
