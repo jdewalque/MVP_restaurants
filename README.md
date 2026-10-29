@@ -27,6 +27,10 @@ npm run seed                                   # données de démonstration (fac
 npm run dev                                    # http://localhost:3000
 ```
 
+Pour l'admin, renseigner au minimum `ADMIN_PASSWORD` et `TOKEN_ENCRYPTION_KEY` (`openssl rand -base64 32`) ; les pages `/dashboard` fonctionnent sans.
+
+En cas d'erreur `Cannot find package '@/generated'` : le client Prisma n'a pas été généré. Lancer `npm run db:generate -w @passaparola/dashboard` (les commandes `dev`, `build`, `db:migrate` et `seed` le font déjà automatiquement).
+
 Toutes les commandes se lancent depuis la racine :
 
 | Commande | Rôle |
